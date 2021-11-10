@@ -1,20 +1,3 @@
-/**
-  ******************************************************************************
-  * @file    main.c
-  * @author  fire
-  * @version V1.0
-  * @date    2015-01-xx
-  * @brief   WF-ESP8266 WiFi模块测试
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火 iSO STM32 开发板 
-  * 论坛    :http://www.firebbs.cn
-  * 淘宝    :https://fire-stm32.taobao.com
-  *
-  ******************************************************************************
-  */ 
- 
 #include "stm32f10x.h"
 #include "bsp_usart1.h"
 #include "bsp_SysTick.h"
@@ -23,7 +6,7 @@
 #include "bsp_dht11.h"
 #include "bsp_led.h"
 #include "bsp_beep.h"
- 
+#include "bsp_key.h"
  
 
 /**
@@ -32,7 +15,7 @@
   * @retval 无
   */
 int main ( void )
-{
+{	
 	/* 初始化 */
   USARTx_Config ();                                                              //初始化串口1
 	SysTick_Init ();                                                               //配置 SysTick 为 1ms 中断一次 
@@ -40,13 +23,12 @@ int main ( void )
 	DHT11_Init ();
   LED_Init ();
 	Beep_Init ();
-	
-	
-	printf ( "\r\n野火 WF-ESP8266 WiFi模块测试例程\r\n" );                          //打印测试例程提示信息
-	
-//	macBEEP_ON ();
-//	Delay_ms(3000);
-//	macBEEP_OFF ();
+	Key_GPIO_Config();
+
+
+	macBEEP_ON ();
+	Delay_ms(100);
+	macBEEP_OFF ();
 	
   ESP8266_StaTcpClient_UnvarnishTest ();
 	

@@ -33,6 +33,8 @@ static void LED_GPIO_Config ( void )
 	RCC_APB2PeriphClockCmd ( macLED3_GPIO_CLK, ENABLE ); 															   
 	GPIO_InitStructure.GPIO_Pin = macLED3_GPIO_PIN;	
 	GPIO_Init ( macLED3_GPIO_PORT, & GPIO_InitStructure );		
+	
+	
 	  		
 }
 
